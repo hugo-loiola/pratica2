@@ -4,18 +4,16 @@
     "slug": "pratica2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "/home/hugo/Projetos/Escola/pratica2/src/assets/bulssola.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "/home/hugo/Projetos/Escola/pratica2/src/assets/bulssola.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

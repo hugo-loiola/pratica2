@@ -24,8 +24,8 @@ const Cadastro = () => {
           keyboardType="email-address"
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#120a8f"
+          color="#120a8f"
           autoCorrect={false}
           onChangeText={() => {}}
         />
@@ -33,16 +33,16 @@ const Cadastro = () => {
           keyboardType="phone-pad"
           style={styles.input}
           placeholder="Telefone"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#120a8f"
+          color="#120a8f"
           autoCorrect={false}
           onChangeText={() => {}}
         />
         <TextInput
           style={styles.input}
           placeholder="Senha"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#120a8f"
+          color="#120a8f"
           autoCorrect={false}
           secureTextEntry={true}
           onChangeText={() => {}}
@@ -50,8 +50,8 @@ const Cadastro = () => {
         <TextInput
           style={styles.input}
           placeholder="Repetir Senha"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#120a8f"
+          color="#120a8f"
           autoCorrect={false}
           secureTextEntry={true}
           onChangeText={() => {}}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#120a8f",
+    backgroundColor: "#fff",
   },
   containerLogo: {
     flex: 1,
@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     borderRadius: 5,
     borderWidth: 2,
-    borderColor: "#eead2d",
+    borderColor: "#120a8f",
     padding: 10,
   },
   btnSubmit: {
-    backgroundColor: "#eead2d",
+    backgroundColor: "#120a8f",
     width: "90%",
     height: 45,
     alignItems: "center",
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   submitText: {
-    color: "black",
+    color: "#fff",
     fontSize: 18,
     letterSpacing: 2,
   },

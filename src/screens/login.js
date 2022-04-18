@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#120a8f",
+    backgroundColor: "#fff",
   },
   containerLogo: {
     flex: 1,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnSubmit: {
-    backgroundColor: "#eead2d",
+    backgroundColor: "#120a8f",
     width: "90%",
     height: 45,
     alignItems: "center",
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   submitText: {
-    color: "black",
+    color: "#fff",
     fontSize: 18,
     letterSpacing: 2,
   },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   registerText: {
-    color: "#eead2d",
+    color: "#000",
   },
 });
 
