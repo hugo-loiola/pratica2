@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "90%",
+    paddingBottom: 50,
   },
   input: {
     width: "90%",
