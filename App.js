@@ -1,6 +1,8 @@
 import React from "react";
 import Login from "./screens/login";
 
-export default function App() {
+const App = () => {
   return <Login />;
-}
+};
+
+export default App;
