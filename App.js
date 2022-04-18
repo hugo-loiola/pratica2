@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./screens/login";
+import Login from "../pratica2/src/screens/login";
 
 const App = () => {
   return <Login />;

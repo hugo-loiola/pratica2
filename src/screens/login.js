@@ -1,61 +1,70 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, Image } from "react-native";
-import Botao from "../components/botao";
+import {
+  View,
+  KeyboardAvoidingView,
+  Image,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 const Login = () => {
   return (
-    <View style={estilo.body}>
-      <View style={{ alignItems: "center" }}>
-        <Image style={estilo.logo} source={require("../assets/bulssola.png")} />
+    <KeyboardAvoidingView style={styles.background}>
+      <View style={styles.containerLogo}>
+        <Image source={require("../assets/bulssola.png")} />
       </View>
-      <Text style={estilo.logoTitle}>Búlssola</Text>
-      <Text>Email</Text>
-      <TextInput
-        style={estilo.input}
-        keyboardType="email-address"
-        placeholder="Coloque seu email"
-      />
-      <Text>Senha</Text>
-      <TextInput
-        style={estilo.input}
-        secureTextEntry={true}
-        placeholder="Coloque sua senha"
-      />
-      <Botao />
-      <Text style={estilo.cadastro}>
-        Crie sua conta <Text style={{ color: "yellow" }}>Aqui</Text>{" "}
-      </Text>
-    </View>
+
+      <View style={styles.container}>
+        <TextInput
+          keyboardType="email-address"
+          style={styles.input}
+          placeholder="Email"
+          autoCorrect={false}
+          onChangeText={() => {}}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          autoCorrect={false}
+          secureTextEntry={true}
+          onChangeText={() => {}}
+        />
+      </View>
+
+      <TouchableOpacity>
+        <Text>Acessar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>Criar Conta</Text>
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
   );
 };
 
-const estilo = StyleSheet.create({
-  body: {
+const styles = StyleSheet.create({
+  background: {
     flex: 1,
+    alignItems: "center",
     justifyContent: "center",
-    flexDirection: "column",
-    padding: 16,
     backgroundColor: "white",
   },
-  logo: {
-    resizeMode: "contain",
-    height: 200,
-    color: "yellow",
+  containerLogo: {
+    flex: 1,
+    justifyContent: "center",
+    height: 150,
   },
-  logoTitle: {
-    textAlign: "center",
-    fontSize: 32,
-    color: "yellow",
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "90%",
   },
   input: {
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: "yellow",
-    padding: 16,
-  },
-  cadastro: {
-    marginTop: 30,
-    textAlign: "center",
+    width: "90%",
+    marginBottom: 15,
   },
 });
+
 export default Login;
