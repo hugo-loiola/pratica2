@@ -1,8 +1,8 @@
 import React from "react";
-import Login from "../pratica2/src/screens/login";
+import Cadastro from "../pratica2/src/screens/cadastro";
 
 const App = () => {
-  return <Login />;
+  return <Cadastro />;
 };
 
 export default App;
