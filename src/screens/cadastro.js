@@ -8,12 +8,6 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import {
-  RopaSans_400Regular,
-  RopaSans_400Regular_Italic,
-} from "@expo-google-fonts/ropa-sans";
-import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 
 const Cadastro = ({ navigation }) => {
   return (

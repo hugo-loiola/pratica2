@@ -5,6 +5,11 @@ import Lista from "./src/screens/lista";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+import {
+  RopaSans_400Regular,
+  RopaSans_400Regular_Italic,
+} from "@expo-google-fonts/ropa-sans";
 
 const Stack = createNativeStackNavigator();
 
