@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   KeyboardAvoidingView,
@@ -8,51 +8,136 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// Validação com o Yup
+const schema = yup.object({
+  email: yup.string().email("Email Inválido").required("Informe seu Email"),
+  phone: yup
+    .number()
+    .integer("Telefone Inválido")
+    .required("Informe o Telefone"),
+  password: yup
+    .string()
+    .min(6, "A senha deve conter pelo menos 6 dígitos")
+    .required("Informe a Senha"),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Senhas tem que ser iguais"),
+});
 
 const Cadastro = ({ navigation }) => {
+  // O que fazer depois de clicar no botão
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  function handleSingUp(data) {
+    alert(`Olá, sua conta foi criada com sucesso!`);
+    console.log(data);
+    navigation.navigate("Login");
+  }
+
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.container}>
-        <TextInput
-          keyboardType="email-address"
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#000"
-          color="#000"
-          autoCorrect={false}
-          onChangeText={() => {}}
+        <Controller
+          control={control}
+          name="email"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              keyboardType="email-address"
+              style={styles.input}
+              placeholder="Email"
+              placeholderTextColor="#000"
+              color="#000"
+              value={value}
+              autoCorrect={false}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
-        <TextInput
-          keyboardType="phone-pad"
-          style={styles.input}
-          placeholder="Telefone"
-          placeholderTextColor="#000"
-          color="#000"
-          autoCorrect={false}
-          onChangeText={() => {}}
+
+        {errors.email && (
+          <Text style={styles.labelError}>{errors.email?.message}</Text>
+        )}
+
+        <Controller
+          control={control}
+          name="phone"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              keyboardType="phone-pad"
+              style={styles.input}
+              placeholder="Telefone"
+              placeholderTextColor="#000"
+              color="#000"
+              autoCorrect={false}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          placeholderTextColor="#000"
-          color="#000"
-          autoCorrect={false}
-          secureTextEntry={true}
-          onChangeText={() => {}}
+
+        {errors.phone && (
+          <Text style={styles.labelError}>{errors.phone?.message}</Text>
+        )}
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              placeholder="Senha"
+              placeholderTextColor="#000"
+              color="#000"
+              autoCorrect={false}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              secureTextEntry={true}
+            />
+          )}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Repetir Senha"
-          placeholderTextColor="#000"
-          color="#000"
-          autoCorrect={false}
-          secureTextEntry={true}
-          onChangeText={() => {}}
+
+        {errors.password && (
+          <Text style={styles.labelError}>{errors.password?.message}</Text>
+        )}
+
+        <Controller
+          control={control}
+          name="passwordConfirmation"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              placeholder="Confirme sua Senha"
+              placeholderTextColor="#000"
+              color="#000"
+              autoCorrect={false}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              secureTextEntry={true}
+            />
+          )}
         />
+
+        {errors.passwordConfirmation && (
+          <Text style={styles.labelError}>
+            {errors.passwordConfirmation?.message}
+          </Text>
+        )}
 
         <TouchableOpacity
           style={styles.btnSubmit}
-          onPress={() => navigation.navigate("Login")}
+          onPress={handleSubmit(handleSingUp)}
         >
           <Text style={styles.submitText}>Criar Conta</Text>
         </TouchableOpacity>
@@ -98,6 +183,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontFamily: "RopaSans_400Regular",
+  },
+  labelError: {
+    alignSelf: "flex-start",
+    color: "red",
+    marginBottom: 8,
   },
 });
 
