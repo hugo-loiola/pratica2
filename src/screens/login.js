@@ -8,8 +8,13 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import {
+  RopaSans_400Regular,
+  RopaSans_400Regular_Italic,
+} from "@expo-google-fonts/ropa-sans";
+import { useFonts } from "expo-font";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerLogo}>
@@ -24,26 +29,32 @@ const Login = () => {
           keyboardType="email-address"
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#000"
+          color="#000"
           autoCorrect={false}
           onChangeText={() => {}}
         />
         <TextInput
           style={styles.input}
           placeholder="Senha"
-          placeholderTextColor="white"
-          color="white"
+          placeholderTextColor="#000"
+          color="#000"
           autoCorrect={false}
           secureTextEntry={true}
           onChangeText={() => {}}
         />
 
-        <TouchableOpacity style={styles.btnSubmit}>
+        <TouchableOpacity
+          style={styles.btnSubmit}
+          onPress={() => navigation.navigate("Lista")}
+        >
           <Text style={styles.submitText}>Acessar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.btnRegister}>
+        <TouchableOpacity
+          style={styles.btnRegister}
+          onPress={() => navigation.navigate("Cadastro")}
+        >
           <Text style={styles.registerText}>Criar Conta</Text>
         </TouchableOpacity>
       </View>
@@ -56,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#009E9D",
   },
   containerLogo: {
     flex: 1,
@@ -72,13 +83,15 @@ const styles = StyleSheet.create({
     width: "90%",
     marginBottom: 15,
     fontSize: 17,
+    fontFamily: "RopaSans_400Regular",
     borderRadius: 5,
     borderWidth: 2,
-    borderColor: "#eead2d",
+    borderColor: "#EB5600",
+    backgroundColor: "#fff",
     padding: 10,
   },
   btnSubmit: {
-    backgroundColor: "#120a8f",
+    backgroundColor: "#EB5600",
     width: "90%",
     height: 45,
     alignItems: "center",
@@ -89,12 +102,14 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     letterSpacing: 2,
+    fontFamily: "RopaSans_400Regular",
   },
   btnRegister: {
-    marginTop: 10,
+    marginTop: 50,
   },
   registerText: {
-    color: "#000",
+    color: "#fff",
+    fontFamily: "RopaSans_400Regular",
   },
 });
 
