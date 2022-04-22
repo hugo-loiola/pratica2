@@ -11,6 +11,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import MeuInput from "../components/MeuInput";
 
 const schema = yup.object({
   email: yup.string().email("Email Inválido").required("Informe seu Email"),
@@ -28,9 +29,9 @@ const Login = ({ navigation }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   function handleSingIn(data) {
-    alert('Bem vindo à Bussola !');
+    alert("Bem vindo à Bússola !");
+    navigation.navigate("Lista");
     console.log(data);
-    navigation.navigate("Login");
   }
 
   return (
@@ -38,7 +39,7 @@ const Login = ({ navigation }) => {
       <View style={styles.containerLogo}>
         <Image
           style={{ height: 150, width: 150 }}
-          source={require("../assets/bulssola.png")}
+          source={require("../assets/bussola.png")}
         />
       </View>
 
@@ -46,41 +47,46 @@ const Login = ({ navigation }) => {
         <Controller
           control={control}
           name="email"
-          render={({ field: { onChange, onBLur, value } }) => (
-            <TextInput
-              value={value}
-              keyboardType="email-address"
-              style={styles.input}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
               placeholder="Email"
-              placeholderTextColor="#000"
-              color="#000"
-              autoCorrect={false}
+              value={value}
               onChangeText={onChange}
-              onBlur={onBlur}
             />
           )}
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Senha"
-          placeholderTextColor="#000"
-          color="#000"
-          autoCorrect={false}
-          secureTextEntry={true}
-          onChangeText={() => {}}
+        {errors.email && (
+          <Text style={styles.labelError}>{errors.email?.message}</Text>
+        )}
+
+        <Controller
+          name="password"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
+              placeholder="Senha"
+              value={value}
+              onChangeText={onChange}
+              secureTextEntry={true}
+            />
+          )}
         />
+
+        {errors.password && (
+          <Text style={styles.labelError}>{errors.password?.message}</Text>
+        )}
 
         <TouchableOpacity
           style={styles.btnSubmit}
-          onPress={() => navigation.navigate("Lista")}
+          onPress={handleSubmit(handleSingIn)}
         >
           <Text style={styles.submitText}>Acessar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.btnRegister}
-          onPress={handleSubmit(handleSingIn)}
+          onPress={() => navigation.navigate("Cadastro")}
         >
           <Text style={styles.registerText}>Criar Conta</Text>
         </TouchableOpacity>
@@ -106,17 +112,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "90%",
   },
-  input: {
-    width: "90%",
-    marginBottom: 15,
-    fontSize: 17,
-    fontFamily: "RopaSans_400Regular",
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: "#EB5600",
-    backgroundColor: "#fff",
-    padding: 10,
-  },
   btnSubmit: {
     backgroundColor: "#EB5600",
     width: "90%",
@@ -124,6 +119,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
+    elevation: 15,
   },
   submitText: {
     color: "#fff",
@@ -137,6 +133,11 @@ const styles = StyleSheet.create({
   registerText: {
     color: "#fff",
     fontFamily: "RopaSans_400Regular",
+  },
+  labelError: {
+    alignSelf: "flex-start",
+    color: "#fff",
+    marginBottom: 8,
   },
 });
 

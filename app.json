@@ -4,9 +4,9 @@
     "slug": "pratica2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "/home/hugo/Projetos/Escola/pratica2/src/assets/bulssola.png",
+    "icon": "/home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg",
     "splash": {
-      "image": "/home/hugo/Projetos/Escola/pratica2/src/assets/bulssola.png",
+      "image": "",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

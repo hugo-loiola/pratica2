@@ -11,6 +11,7 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import MeuInput from "../components/MeuInput";
 
 // Validação com o Yup
 const schema = yup.object({
@@ -18,6 +19,7 @@ const schema = yup.object({
   phone: yup
     .number()
     .integer("Telefone Inválido")
+    .min(11, "Telefone Pequeno")
     .required("Informe o Telefone"),
   password: yup
     .string()
@@ -48,17 +50,11 @@ const Cadastro = ({ navigation }) => {
         <Controller
           control={control}
           name="email"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              keyboardType="email-address"
-              style={styles.input}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
               placeholder="Email"
-              placeholderTextColor="#000"
-              color="#000"
               value={value}
-              autoCorrect={false}
               onChangeText={onChange}
-              onBlur={onBlur}
             />
           )}
         />
@@ -70,17 +66,13 @@ const Cadastro = ({ navigation }) => {
         <Controller
           control={control}
           name="phone"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              keyboardType="phone-pad"
-              style={styles.input}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
               placeholder="Telefone"
-              placeholderTextColor="#000"
-              color="#000"
-              autoCorrect={false}
               value={value}
               onChangeText={onChange}
-              onBlur={onBlur}
+              keyboardType="phone-pad"
+              maxLength={13}
             />
           )}
         />
@@ -92,16 +84,11 @@ const Cadastro = ({ navigation }) => {
         <Controller
           control={control}
           name="password"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
               placeholder="Senha"
-              placeholderTextColor="#000"
-              color="#000"
-              autoCorrect={false}
               value={value}
               onChangeText={onChange}
-              onBlur={onBlur}
               secureTextEntry={true}
             />
           )}
@@ -114,16 +101,11 @@ const Cadastro = ({ navigation }) => {
         <Controller
           control={control}
           name="passwordConfirmation"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
+          render={({ field: { onChange, value } }) => (
+            <MeuInput
               placeholder="Confirme sua Senha"
-              placeholderTextColor="#000"
-              color="#000"
-              autoCorrect={false}
               value={value}
               onChangeText={onChange}
-              onBlur={onBlur}
               secureTextEntry={true}
             />
           )}
@@ -160,17 +142,6 @@ const styles = StyleSheet.create({
     width: "90%",
     paddingBottom: 50,
   },
-  input: {
-    width: "90%",
-    marginBottom: 15,
-    fontSize: 17,
-    fontFamily: "RopaSans_400Regular",
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: "#EB5600",
-    backgroundColor: "#fff",
-    padding: 10,
-  },
   btnSubmit: {
     backgroundColor: "#EB5600",
     width: "90%",
@@ -178,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
+    elevation: 15,
   },
   submitText: {
     color: "#fff",
@@ -186,7 +158,7 @@ const styles = StyleSheet.create({
   },
   labelError: {
     alignSelf: "flex-start",
-    color: "red",
+    color: "#fff",
     marginBottom: 8,
   },
 });

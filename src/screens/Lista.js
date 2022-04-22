@@ -12,17 +12,47 @@ import {
 const Lista = ({ navigation }) => {
   const lugar = [
     {
-      nome: "Paris",
       key: "1",
-      link: "https://pt.wikipedia.org/wiki/Paris",
-      img: require("../assets/bulssola.png"),
+      nome: "Paris",
+      link: "https://www.youtube.com/watch?v=Y5TNhAMEm5g",
+      img: require("../assets/paris.jpg"),
     },
-    { nome: "Nova York", key: "2" },
-    { nome: "Rio de Janeiro", key: "3" },
-    { nome: "Manaus", key: "4" },
-    { nome: "Bankok", key: "5" },
-    { nome: "Tokyo", key: "6" },
-    { nome: "Hong Kong", key: "7" },
+    {
+      key: "2",
+      nome: "Nova York",
+      link: "https://www.youtube.com/watch?v=FjU_x1106pg",
+      img: require("../assets/nova-york.jpg"),
+    },
+    {
+      key: "3",
+      nome: "Rio de Janeiro",
+      link: "https://www.youtube.com/watch?v=fA7kQn-l6T4",
+      img: require("../assets/rio-de-janeiro.jpeg"),
+    },
+    {
+      key: "4",
+      nome: "Brasília",
+      link: "https://www.youtube.com/watch?v=KO5uWcITVlI",
+      img: require("../assets/brasilia.jpg"),
+    },
+    {
+      key: "5",
+      nome: "Bangkok",
+      link: "https://www.youtube.com/watch?v=KpYbH8NSXYY",
+      img: require("../assets/bangkok.jpg"),
+    },
+    {
+      key: "6",
+      nome: "Tokyo",
+      link: "https://www.youtube.com/watch?v=0nTO4zSEpOs",
+      img: require("../assets/tokyo.webp"),
+    },
+    {
+      key: "7",
+      nome: "Cairo",
+      link: "https://www.youtube.com/watch?v=6OhdZ9TurMs",
+      img: require("../assets/cairo.jpg"),
+    },
   ];
 
   return (
@@ -39,10 +69,10 @@ const Lista = ({ navigation }) => {
                 Linking.openURL(item.link);
               }}
             >
-              <Text style={styles.lista}>{item.nome}</Text>
+              <Text style={styles.textCard}>{item.nome}</Text>
               <View>
                 <Image
-                  style={{ height: 100, width: 100, resizeMode: "contain" }}
+                  style={{ height: 200, width: 200, resizeMode: "contain" }}
                   source={item.img}
                 />
               </View>
@@ -60,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  lista: {
+  textCard: {
     textAlign: "center",
     fontSize: 16,
     fontFamily: "RopaSans_400Regular",
@@ -76,6 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 16,
     marginBottom: 20,
+    marginTop: 20,
     elevation: 15,
   },
 });
