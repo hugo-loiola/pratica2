@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg"
     }
   }
 }
