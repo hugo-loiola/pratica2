@@ -4,7 +4,7 @@
     "slug": "pratica2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "/home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg",
+    "icon": "/home/hugo/Projetos/Escola/pratica2/src/assets/bussola.png",
     "splash": {
       "image": "",
       "resizeMode": "contain",
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg",
+        "foregroundImage": "/home/hugo/Projetos/Escola/pratica2/src/assets/bussola.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "home/hugo/Projetos/Escola/pratica2/src/assets/Screenshot_1.jpg"
+      "favicon": "/home/hugo/Projetos/Escola/pratica2/src/assets/bussola.png"
     }
   }
 }
