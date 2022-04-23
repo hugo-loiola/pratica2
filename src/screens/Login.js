@@ -3,7 +3,6 @@ import {
   View,
   KeyboardAvoidingView,
   Image,
-  TextInput,
   Text,
   TouchableOpacity,
   StyleSheet,
@@ -12,6 +11,7 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import MeuInput from "../components/MeuInput";
+import { auth } from "../../firebase";
 
 const schema = yup.object({
   email: yup.string().email("Email Inválido").required("Informe seu Email"),
@@ -28,10 +28,15 @@ const Login = ({ navigation }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  function handleSingIn(data) {
-    alert("Bem vindo !");
+  function handleSingIn() {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log(user.email);
+      })
+      .catch((error) => alert(error.message));
     navigation.navigate("Lista");
-    console.log(data);
   }
 
   return (
