@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   function handleSingIn(data) {
-    alert("Bem vindo à Bússola !");
+    alert("Bem vindo !");
     navigation.navigate("Lista");
     console.log(data);
   }
